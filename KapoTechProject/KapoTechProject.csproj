@@ -118,12 +118,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212291114197_mig_add_database.cs" />
-    <Compile Include="Migrations\202212291114197_mig_add_database.designer.cs">
-      <DependentUpon>202212291114197_mig_add_database.cs</DependentUpon>
+    <Compile Include="Migrations\202212301559208_mig_Add_database.cs" />
+    <Compile Include="Migrations\202212301559208_mig_Add_database.designer.cs">
+      <DependentUpon>202212301559208_mig_Add_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212301624451_mig_add_project_projectimage.cs" />
+    <Compile Include="Migrations\202212301624451_mig_add_project_projectimage.designer.cs">
+      <DependentUpon>202212301624451_mig_add_project_projectimage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Info.cs" />
@@ -235,6 +242,9 @@
     <Content Include="Views\Shared\LayoutPartial\_ScriptPartial.cshtml" />
     <Content Include="Views\Shared\LayoutPartial\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\LayoutPartial\_NavbarPartial.cshtml" />
+    <Content Include="Views\Service\ServiceList.cshtml" />
+    <Content Include="Views\Project\ProjectList.cshtml" />
+    <Content Include="Views\Info\InfoList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,8 +277,11 @@
     <Content Include="Scripts\jquery-3.6.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212291114197_mig_add_database.resx">
-      <DependentUpon>202212291114197_mig_add_database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212301559208_mig_Add_database.resx">
+      <DependentUpon>202212301559208_mig_Add_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212301624451_mig_add_project_projectimage.resx">
+      <DependentUpon>202212301624451_mig_add_project_projectimage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

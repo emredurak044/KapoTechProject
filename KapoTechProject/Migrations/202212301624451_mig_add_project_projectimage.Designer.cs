@@ -7,13 +7,13 @@ namespace KapoTechProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class mig_add_database : IMigrationMetadata
+    public sealed partial class mig_add_project_projectimage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mig_add_database));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mig_add_project_projectimage));
         
         string IMigrationMetadata.Id
         {
-            get { return "202212291114197_mig_add_database"; }
+            get { return "202212301624451_mig_add_project_projectimage"; }
         }
         
         string IMigrationMetadata.Source
