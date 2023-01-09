@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace KapoTechProject.Controllers
 {
+    [Route("[controller]/[action]/{id?}")]
     public class InfoController : Controller
     {
         // GET: Info
@@ -16,7 +17,7 @@ namespace KapoTechProject.Controllers
         {
             return View();
         }
-        public ActionResult InfoList()
+        public ActionResult _InfoList()
         {
             var result = _context.Infos.ToList();
             return PartialView(result);
