@@ -51,19 +51,50 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -116,12 +147,17 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\InfosController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -135,11 +171,21 @@
     <Compile Include="Migrations\202212301624451_mig_add_project_projectimage.designer.cs">
       <DependentUpon>202212301624451_mig_add_project_projectimage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301101401018_mig_add_Teams.cs" />
+    <Compile Include="Migrations\202301101401018_mig_add_Teams.designer.cs">
+      <DependentUpon>202301101401018_mig_add_Teams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301101426246_mig_add_identity.cs" />
+    <Compile Include="Migrations\202301101426246_mig_add_identity.designer.cs">
+      <DependentUpon>202301101426246_mig_add_identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\KapoTechContext.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1641,6 +1687,51 @@
     <Content Include="LayoutContent\assets\webfonts\fa-v4compatibility.woff2" />
     <Content Include="LayoutContent\vendor\jquery\jquery.min.map" />
     <Content Include="LayoutContent\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="LoginContent\css\main.css" />
+    <Content Include="LoginContent\css\util.css" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="LoginContent\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="LoginContent\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="LoginContent\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="LoginContent\fonts\ubuntu\UFL.txt" />
+    <Content Include="LoginContent\images\bg-01.jpg" />
+    <Content Include="LoginContent\images\icons\favicon.ico" />
+    <Content Include="LoginContent\js\main.js" />
+    <Content Include="LoginContent\vendor\animate\animate.css" />
+    <Content Include="LoginContent\vendor\animsition\css\animsition.css" />
+    <Content Include="LoginContent\vendor\animsition\css\animsition.min.css" />
+    <Content Include="LoginContent\vendor\animsition\js\animsition.js" />
+    <Content Include="LoginContent\vendor\animsition\js\animsition.min.js" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="LoginContent\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="LoginContent\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="LoginContent\vendor\bootstrap\js\popper.js" />
+    <Content Include="LoginContent\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="LoginContent\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="LoginContent\vendor\countdowntime\countdowntime.js" />
+    <Content Include="LoginContent\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="LoginContent\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="LoginContent\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="LoginContent\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="LoginContent\vendor\daterangepicker\moment.js" />
+    <Content Include="LoginContent\vendor\daterangepicker\moment.min.js" />
+    <Content Include="LoginContent\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="LoginContent\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="LoginContent\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="LoginContent\vendor\select2\select2.css" />
+    <Content Include="LoginContent\vendor\select2\select2.js" />
+    <Content Include="LoginContent\vendor\select2\select2.min.css" />
+    <Content Include="LoginContent\vendor\select2\select2.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -1997,11 +2088,99 @@
     <Content Include="Areas\Admin\Views\Infos\InfoList.cshtml" />
     <Content Include="Areas\Admin\Views\Infos\InfoAdd.cshtml" />
     <Content Include="Areas\Admin\Views\Infos\InfoUpdated.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\ProjectsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\ProjectsAdd.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\ProjectsUpdated.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\ServicesList.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\ServicesAdd.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\ServicesUpdated.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\WeatherPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ServiceCounterPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\TeamCounterPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ProjectCounterPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ProjectListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\TeamsListPartial.cshtml" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="LoginContent\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="LoginContent\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="LoginContent\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="LoginContent\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="LoginContent\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="LoginContent\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="LoginContent\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-BoldItalic.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-Italic.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-LightItalic.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-MediumItalic.ttf" />
+    <Content Include="LoginContent\fonts\ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="LoginContent\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.6.1.js" />
-    <Content Include="Scripts\jquery-3.6.1.min.js" />
-    <Content Include="Scripts\jquery-3.6.1.slim.js" />
-    <Content Include="Scripts\jquery-3.6.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.6.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.6.3.js" />
+    <Content Include="Scripts\jquery-3.6.3.min.js" />
+    <Content Include="Scripts\jquery-3.6.3.slim.js" />
+    <Content Include="Scripts\jquery-3.6.3.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.3.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -2029,6 +2208,7 @@
     <Content Include="Views\Service\ServiceList.cshtml" />
     <Content Include="Views\Project\ProjectList.cshtml" />
     <Content Include="Views\Info\_InfoList.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2058,8 +2238,6 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\jquery-3.6.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202212301559208_mig_Add_database.resx">
@@ -2067,6 +2245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212301624451_mig_add_project_projectimage.resx">
       <DependentUpon>202212301624451_mig_add_project_projectimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301101401018_mig_add_Teams.resx">
+      <DependentUpon>202301101401018_mig_add_Teams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301101426246_mig_add_identity.resx">
+      <DependentUpon>202301101426246_mig_add_identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

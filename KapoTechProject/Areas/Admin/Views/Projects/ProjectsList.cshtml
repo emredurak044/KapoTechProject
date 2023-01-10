@@ -1,0 +1,48 @@
+﻿@model List<KapoTechProject.Models.Project>
+
+@{
+    ViewBag.Title = "ProjectsList";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+    var counter = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Info Listesi</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>URL</th>
+                            <th>Status</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            counter++;
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.ProjectName</td>
+                                <td>@item.ProjectURL</td>
+                                <td>@item.Status</td>
+                                <td>
+                                    <a href="/Admin/Projects/ProjectsDeleted/@item.ProjectID" class="btn btn-outline-danger">
+                                        Sil
+                                    </a>
+                                    <a href="/Admin/Projects/ProjectsUpdated/@item.ProjectID" class="btn btn-outline-success">
+                                        Güncelle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

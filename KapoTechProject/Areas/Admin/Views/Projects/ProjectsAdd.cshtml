@@ -1,0 +1,39 @@
+﻿@model KapoTechProject.Models.Project
+@{
+    ViewBag.Title = "ProjectsAdd";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Project Add</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" class="form-control" placeholder="Project Name" name="ProjectName">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Project Image</label>
+                    <input type="text" class="form-control" placeholder="Project Image" name="ProjectImage">
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Project URL</label>
+                    <input type="text" class="form-control" placeholder="Project URL" name="ProjectURL">
+                </div>
+
+                <div class="form-check form-check-flat form-check-primary">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="Status">
+                        Status
+                        <i class="input-helper"></i>
+                    </label>
+                </div>
+                <input type="submit" class="btn btn-primary mr-2" value="Submit" />
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model List<KapoTechProject.Models.Project>
+<div class="row">
+    <div class="col-md-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title mb-0">Projects</p>
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th class="pl-0  pb-2 border-bottom">#</th>
+                                <th class="border-bottom pb-2">Project Name</th>
+                                <th class="border-bottom pb-2">Project URL</th>
+                                <th class="border-bottom pb-2">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="pl-0">@item.ProjectID</td>
+                                    <td><p class="mb-0">@item.ProjectName</p></td>
+                                    <td class="text-muted">@item.ProjectURL</td>
+                                    <td class="text-muted">@item.Status</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
