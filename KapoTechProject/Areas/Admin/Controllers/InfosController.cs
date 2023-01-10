@@ -8,6 +8,8 @@ using System.Web.Mvc;
 
 namespace KapoTechProject.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class InfosController : Controller
     {
         private KapoTechContext _context = new KapoTechContext();

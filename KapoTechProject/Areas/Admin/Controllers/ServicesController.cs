@@ -8,6 +8,8 @@ using System.Web.Mvc;
 
 namespace KapoTechProject.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class ServicesController : Controller
     {
         // GET: Admin/Services

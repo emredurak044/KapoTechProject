@@ -8,6 +8,7 @@ using System.Xml.Linq;
 
 namespace KapoTechProject.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         // GET: Admin/Dashboard

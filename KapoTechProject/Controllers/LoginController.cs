@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using KapoTechProject;
 
 namespace KapoTechProject.Controllers
 {
@@ -57,7 +58,7 @@ namespace KapoTechProject.Controllers
         {
             return View();
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> SignIn(LoginViewModel model)
         {
@@ -65,7 +66,7 @@ namespace KapoTechProject.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Manage");
+                    return RedirectToAction("Index", "Dashboard",new {area = "Admin"});
 
                 case SignInStatus.Failure:
                     return RedirectToAction("Index", "Home");
@@ -90,10 +91,10 @@ namespace KapoTechProject.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NameSurname = model.NameSurname };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                var addRoleToUser = await UserManager.AddToRoleAsync(user.Id, "Member");
-                if (result.Succeeded && addRoleToUser.Succeeded)
+                var addroletouser = await UserManager.AddToRoleAsync(user.Id, "member");
+                if (result.Succeeded && addroletouser.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Home");
                 }
             }

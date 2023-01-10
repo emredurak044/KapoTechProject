@@ -6,12 +6,13 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
 using System.Threading.Tasks;
+using KapoTechProject;
 
-[assembly: OwinStartup(typeof(KapoTechProject.App_Start.Startup))]
+//[assembly: OwinStartup(typeof(KapoTechProject.App_Start.Startup))]
 
-namespace KapoTechProject.App_Start
+namespace KapoTechProject
 {
-    public class Startup
+    public partial class Startup
     {
         public void ConfigureAuth(IAppBuilder app)
         {

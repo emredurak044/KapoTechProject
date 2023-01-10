@@ -1,4 +1,5 @@
 ﻿@model KapoTechProject.Models.RegisterViewModel
+
 @{
     Layout = null;
 }
@@ -38,17 +39,13 @@
         <div class="container-login100" style="background-image: url('~/LoginContent/images/bg-01.jpg');">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
-                    Account Register
+                    Account Login
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5" method="post">
                     @Html.AntiForgeryToken()
-                    <div class="wrap-input100 validate-input" data-validate="Enter namesurname">
-                        <input class="input100" type="text" name="NameSurname" placeholder="Name-Surname">
-                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-                    </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="Email" placeholder="Email">
+                        <input class="input100" type="text" name="Email" placeholder="Username">
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
 
@@ -57,14 +54,9 @@
                         <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter re-password">
-                        <input class="input100" type="password" name="ConfirmPassword" placeholder="ConfirmPassword">
-                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
-                    </div>
-
                     <div class="container-login100-form-btn m-t-32">
                         <button class="login100-form-btn">
-                            Register
+                            Sign In
                         </button>
                     </div>
 
