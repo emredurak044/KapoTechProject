@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class mig_add_identity : DbMigration
+    public partial class mig_add_database : DbMigration
     {
         public override void Up()
         {
@@ -29,6 +29,19 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Teams",
+                c => new
+                    {
+                        TeamID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Surname = c.String(),
+                        GithubURL = c.String(),
+                        LinkedinURL = c.String(),
+                        Status = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.TeamID);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -76,6 +89,7 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            AddColumn("dbo.Projects", "ProjectImage", c => c.String());
         }
         
         public override void Down()
@@ -90,9 +104,11 @@
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropColumn("dbo.Projects", "ProjectImage");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Teams");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
         }
